@@ -8,10 +8,10 @@ KERNEL_BRANCH="kernel"
 KERNEL_DEFCONFIG="a02_defconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
-CLANG_URL="https://gitlab.com/ThankYouMario/android_prebuilts_clang-standalone/-/archive/18/android_prebuilts_clang-standalone-18.tar.gz"
+# CLANG_URL="https://gitlab.com/ThankYouMario/android_prebuilts_clang-standalone/-/archive/18/android_prebuilts_clang-standalone-18.tar.gz"
 
 # Prebuilt GCC Utilities (AOSP)
-GCC_URL="https://git.codelinaro.org/clo/la/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/-/archive/aosp-new/main-kernel-2026/arm-linux-androideabi-4.9-aosp-new-main-kernel-2026.tar.gz"
+# GCC_URL="https://git.codelinaro.org/clo/la/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/-/archive/aosp-new/main-kernel-2026/arm-linux-androideabi-4.9-aosp-new-main-kernel-2026.tar.gz"
 # GCC_BRANCH="master-kernel-build-2021"
 
 # Setup make Command
@@ -34,14 +34,15 @@ mkdir -p "${WORK}"
 cd "${WORK}" || exit 1
 
 # Cloning all the Necessary files
-if [ ! -d clang ]; then mkdir clang && curl -Lsq "${CLANG_URL}" -o clang.tgz && tar -xzf clang.tgz -C clang; fi
-if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tgz && tar -xzf gcc.tgz -C gcc; fi
+# if [ ! -d clang ]; then mkdir clang && curl -Lsq "${CLANG_URL}" -o clang.tgz && tar -xzf clang.tgz -C clang; fi
+# if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tgz && tar -xzf gcc.tgz -C gcc; fi
 # if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tar.xz && unxz gcc.tar.xz && tar -xvf gcc.tar -C gcc; fi
 # [ ! -d gcc ] && git clone --depth=1 "${GCC_URL}" -b "${GCC_BRANCH}" ./gcc
 [ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
 
 # Setting Toolchain Path
-PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
+PATH="${KERNEL_SOURCE} -b ${KERNEL_BRANCH}/toolchain/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9-lineage-19.1/bin:/bin"
+# PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
 # PATH="${WORK}/gcc/bin:/bin"
 
 # Enter Kernel root directory
