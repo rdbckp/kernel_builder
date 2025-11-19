@@ -17,7 +17,6 @@ GCC_URL="https://git.codelinaro.org/clo/la/platform/prebuilts/gcc/linux-x86/arm/
 # Setup make Command
 make_fun() {
 	make O=out ARCH=arm CC=clang HOSTCC=clang \
-		CLANG_TRIPLE=armv7a-linux-androideabi- \
 		CROSS_COMPILE=arm-linux-androideabi- "$@"
 }
 
