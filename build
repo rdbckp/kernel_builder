@@ -40,7 +40,7 @@ cd "${WORK}" || exit 1
 [ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
 
 # Setting Toolchain Path
-PATH="${KERNEL_SOURCE}/${KERNEL_BRANCH}/toolchain/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9-lineage-19.1/bin"
+# PATH="${KERNEL_SOURCE}/${KERNEL_BRANCH}/toolchain/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9-lineage-19.1/bin"
 # PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
 # PATH="${WORK}/gcc/bin:/bin"
 
