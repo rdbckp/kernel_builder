@@ -1,0 +1,23 @@
+name: Check
+
+on: 
+  workflow_dispatch:
+    inputs:
+      DEVICE_NAME:
+        description: 'Ready'
+        required: true
+        default: 'Ok'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Start Building Kernel
+      run: |
+        ./build
