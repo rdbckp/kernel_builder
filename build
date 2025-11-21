@@ -10,12 +10,8 @@ KERNEL_DEFCONFIG="a02_defconfig"
 # Prebuilt Clang Toolchain (AOSP)
 # CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/master-kernel-build-2021/clang-r383902.tar.gz"
 # CLANG_URL="https://gitlab.com/ThankYouMario/android_prebuilts_clang-standalone/-/archive/18/android_prebuilts_clang-standalone-12.tar.gz"
-# CLANG_URL="https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b.git"
-# CLANG_BRANCH="lineage-20.0"
-# CLANG_URL="https://github.com/kdrag0n/proton-clang.git"
-# CLANG_BRANCH="master"
-CLANG_URL="https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86.git"
-CLANG_BRANCH="11.0"
+CLANG_URL="https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b.git"
+CLANG_BRANCH="lineage-20.0"
 
 # Prebuilt GCC Utilities (AOSP)
 GCC_URL="https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.git"
