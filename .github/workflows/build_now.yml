@@ -1,4 +1,4 @@
-name: Check
+name: Kernel_Builder
 
 on: 
   workflow_dispatch:
