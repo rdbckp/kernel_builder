@@ -14,7 +14,7 @@ KERNEL_DEFCONFIG="a02_defconfig"
 # CLANG_BRANCH="lineage-20.0"
 # CLANG_URL="https://github.com/kdrag0n/proton-clang.git"
 # CLANG_BRANCH="master"
-CLANG_URL="https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r417554.git"
+CLANG_URL="https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86.git"
 CLANG_BRANCH="11.0"
 
 # Prebuilt GCC Utilities (AOSP)
