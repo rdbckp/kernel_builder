@@ -12,8 +12,7 @@ KERNEL_DEFCONFIG="a02_defconfig"
 # CLANG_URL="https://gitlab.com/ThankYouMario/android_prebuilts_clang-standalone/-/archive/18/android_prebuilts_clang-standalone-12.tar.gz"
 # CLANG_URL="https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b.git"
 # CLANG_BRANCH="lineage-20.0"
-CLANG_URL="https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86.git"
-CLANG_BRANCH="11.0/clang-3289846"
+CLANG_URL="https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86/tree/11.0/clang-3289846"
 
 # Prebuilt GCC Utilities (AOSP)
 # GCC_URL=="https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/tags/android-mainline-11.0.0_r45.tar.gz"
@@ -44,7 +43,7 @@ cd "${WORK}" || exit 1
 # if [ ! -d clang ]; then mkdir clang && curl -Lsq "${CLANG_URL}" -o clang.tgz && tar -xzf clang.tgz -C clang; fi 		# untar gz
 # if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tgz && tar -xzf gcc.tgz -C gcc; fi
 # if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tar.xz && unxz gcc.tar.xz && tar -xvf gcc.tar -C gcc; fi
-[ ! -d clang ] && git clone --depth=1 "${CLANG_URL}" -b "${CLANG_BRANCH}" ./clang
+[ ! -d clang ] && git clone --depth=1 "${CLANG_URL}" ./clang
 [ ! -d gcc ] && git clone --depth=1 "${GCC_URL}" -b "${GCC_BRANCH}" ./gcc
 [ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
 
