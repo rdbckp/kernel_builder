@@ -16,7 +16,6 @@ CLANG_URL="https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-
 CLANG_BRANCH="11.0"
 
 # Prebuilt GCC Utilities (AOSP)
-# GCC_URL=="https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/tags/android-mainline-11.0.0_r45.tar.gz"
 GCC_URL="https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.git"
 GCC_BRANCH="lineage-18.1"
 
