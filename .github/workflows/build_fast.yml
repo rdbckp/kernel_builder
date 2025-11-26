@@ -6,7 +6,7 @@ on:
       DEVICE_NAME:
         description: 'Build'
         required: true
-        default: 'SM-a022F-Kernel'
+        default: 'SM-A022F-Kernel'
 
 permissions:
   contents: write
