@@ -17,7 +17,7 @@ CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-
 
 # Prebuilt GCC Utilities (AOSP)
 GCC_URL="https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.git"
-GCC_BRANCH="lineage-19.1"
+GCC_BRANCH="lineage-18.1"
 
 # Setup make Command
 make_fun() {
