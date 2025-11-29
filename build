@@ -3,8 +3,8 @@
 set -e -x
 
 # Kernel Source
-KERNEL_SOURCE="https://github.com/a02-trial/GCC"
-KERNEL_BRANCH="kernel"
+KERNEL_SOURCE="https://github.com/rdbckp/kernel_a02"
+KERNEL_BRANCH="kernelku"
 KERNEL_DEFCONFIG="a02_defconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
