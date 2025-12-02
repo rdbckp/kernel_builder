@@ -1,5 +1,5 @@
 
-name: Kernel_Builder
+name: Kernel_Builder_Full
 
 on: 
   workflow_dispatch:
