@@ -3,8 +3,8 @@
 set -e -x
 
 # Kernel Source
-KERNEL_SOURCE="https://github.com/rdbckp/kernel_a02"
-KERNEL_BRANCH="kernelku"
+KERNEL_SOURCE="https://github.com/Firxp011/android_kernel_samsung_a02"
+KERNEL_BRANCH="A022FXXS3BWA1"
 KERNEL_DEFCONFIG="a02_defconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
