@@ -6,7 +6,7 @@ set -e -x
 # KERNEL_SOURCE="https://github.com/rdbckp/update"
 # KERNEL_BRANCH="kernel"
 KERNEL_SOURCE="https://github.com/rdbckp/kernel_a02"
-KERNEL_BRANCH="kernelku"
+KERNEL_BRANCH="master"
 KERNEL_DEFCONFIG="a02_defconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
