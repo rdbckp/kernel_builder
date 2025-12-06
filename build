@@ -3,8 +3,8 @@
 set -e -x
 
 # Kernel Source
-KERNEL_SOURCE="https://github.com/rdbckp/kernel_a02"
-KERNEL_BRANCH="kernelku"
+KERNEL_SOURCE="https://github.com/rdbckp/kernel_Q"
+KERNEL_BRANCH="main"
 KERNEL_DEFCONFIG="a02_defconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
@@ -18,8 +18,8 @@ KERNEL_DEFCONFIG="a02_defconfig"
 # CLANG_BRANCH="master"
 # CLANG_URL="https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b.git"
 # CLANG_BRANCH="lineage-20.0"
-CLANG_URL="https://github.com/Havoc-OS/android_prebuilts_clang_host_linux-x86"
-CLANG_BRANCH="eleven"
+# CLANG_URL="https://github.com/Havoc-OS/android_prebuilts_clang_host_linux-x86"
+# CLANG_BRANCH="eleven"
 
 # Prebuilt GCC Utilities (AOSP)
 # GCC_URL="https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/heads/android12L-s1-release.tar.gz"
@@ -27,8 +27,8 @@ CLANG_BRANCH="eleven"
 # GCC_BRANCH="amd64"
 # GCC_URL="https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.git"
 # GCC_BRANCH="lineage-19.1"
-GCC_URL="https://github.com/Havoc-OS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.git"
-GCC_BRANCH="eleven"
+# GCC_URL="https://github.com/Havoc-OS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.git"
+# GCC_BRANCH="eleven"
 
 # Setup make Command
 make_fun() {
