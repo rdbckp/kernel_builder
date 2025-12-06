@@ -8,7 +8,7 @@ KERNEL_BRANCH="main"
 KERNEL_DEFCONFIG="a02_defconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
-CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android12L-s1-release/clang-r416183b1.tar.gz"
+# CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android12L-s1-release/clang-r416183b1.tar.gz"
 # CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/master-kernel-build-2021/clang-r383902.tar.gz"
 # CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android11-qpr3-s1-release/clang-r383902b1.tar.gz"
 # CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android12-qpr3-s7-release/clang-r383902.tar.gz"
@@ -18,13 +18,17 @@ CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-
 # CLANG_BRANCH="master"
 # CLANG_URL="https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b.git"
 # CLANG_BRANCH="lineage-20.0"
+CLANG_URL="https://github.com/Havoc-OS/android_prebuilts_clang_host_linux-x86"
+CLANG_BRANCH="eleven"
 
 # Prebuilt GCC Utilities (AOSP)
-GCC_URL="https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/heads/android12L-s1-release.tar.gz"
+# GCC_URL="https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/heads/android12L-s1-release.tar.gz"
 # GCC_URL="https://github.com/EternalX-project/arm-linux-gnueabi.git"
 # GCC_BRANCH="amd64"
 # GCC_URL="https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.git"
 # GCC_BRANCH="lineage-19.1"
+GCC_URL="https://github.com/Havoc-OS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.git"
+GCC_BRANCH="eleven"
 
 # Setup make Command
 make_fun() {
