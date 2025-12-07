@@ -1,4 +1,4 @@
-name: Build kernelgw
+name: Build Now
 
 on: 
   workflow_dispatch:
@@ -16,7 +16,7 @@ jobs:
       
     - name: Start
       run: |
-        ./build2
+        ./build
         curl -F document=@"$(echo /home/runner/work/ANY/*.zip)" https://api.telegram.org/bot"${{ secrets.TOKEN_BOT }}"/sendDocument?chat_id=-1001751846474 > /dev/null 2>&1
 
     - uses: "marvinpinto/action-automatic-releases@latest"
