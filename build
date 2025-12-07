@@ -31,8 +31,7 @@ make_fun() {
 	make O=out ARCH=arm \
 		CC=clang HOSTCC=clang \
 		CLANG_TRIPLE=arm-linux-gnueabi- \
-		CROSS_COMPILE=arm-linux-androideabi- \
-		CROSS_COMPILE_ARM32=arm-linux-androideabi- "$@" 
+		CROSS_COMPILE=arm-linux-androideabi- "$@" 
 }
 
 # Make defconfig
