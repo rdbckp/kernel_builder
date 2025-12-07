@@ -13,7 +13,7 @@ CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-
 # CLANG_BRANCH="lineage-20.0"
 
 # Prebuilt GCC Utilities (AOSP)
-GCCG_URL="https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/heads/android11-release.tar.gz"
+GCC_URL="https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/heads/android11-release.tar.gz"
 # GCC_URL="https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.git"
 # GCC_BRANCH="lineage-18.1"
 
