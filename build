@@ -37,23 +37,24 @@ KERNEL_SRC="${WORK}/${KERNEL}"
 mkdir -p "${WORK}"
 cd "${WORK}" || exit 1
 
+# Cloning kernel source
+[ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
+
+# Enter Kernel root directory
+cd "${KERNEL_SRC}" || exit 1
+
+# Test and learning
+wget "https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.200.xz" | patch -p1 < patch-4.14.200.xz -
+
 # Cloning all the Necessary files
 if [ ! -d clang ]; then mkdir clang && curl -Lsq "${CLANG_URL}" -o clang.tgz && tar -xzf clang.tgz -C clang; fi
 if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tgz && tar -xzf gcc.tgz -C gcc; fi
 # if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tar.xz && unxz gcc.tar.xz && tar -xvf gcc.tar -C gcc; fi
 # [ ! -d clang ] && git clone --depth=1 "${CLANG_URL}" -b "${CLANG_BRANCH}" ./clang
 #[ ! -d gcc ] && git clone --depth=1 "${GCC_URL}" -b "${GCC_BRANCH}" ./gcc
-[ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
 
 # Setting Toolchain Path
 PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
-
-# Enter Kernel root directory
-cd "${KERNEL_SRC}" || exit 1
-
-# KernelSU - Disable if not building one.
-wget "https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.200.xz" | patch -p1 < patch-4.14.200.xz -
-# curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
 
 # Start Compiling Kernel
 make_fun "${KERNEL_DEFCONFIG}"
