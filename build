@@ -53,7 +53,10 @@ PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
 # Enter Kernel root directory
 cd "${KERNEL_SRC}" || exit 1
 
+# KernelSU - Disable if not building one.
+curl -LSs "https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.200.xz" | patch -p1 < patch-4.14.200.xz -
+# curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
+
 # Start Compiling Kernel
-make_fun mrproper
 make_fun "${KERNEL_DEFCONFIG}"
 make_fun -j"$(nproc --all)" 2>&1 | tee build.log 
