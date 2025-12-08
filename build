@@ -57,7 +57,8 @@ if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tgz && tar -xzf
 PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
 
 # Enter Kernel root directory
-cd "${KERNEL_SRC}" | cp "${KERNEL_SRC2}/${KERNEL_DEFCONFIG}" "${KERNEL_SRC}" | exit 1
+cd "${KERNEL_SRC}"
+cp "${KERNEL_SRC2}/${KERNEL_DEFCONFIG}" "${KERNEL_SRC}" || exit 1
 
 # Start Compiling Kernel
 make_fun "${KERNEL_DEFCONFIG}"
