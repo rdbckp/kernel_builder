@@ -38,7 +38,7 @@ DEF="myDef"
 KERNEL_SRC="${WORK}/${KERNEL}"
 
 # Defconfig Path
-KERNELD="${WORK}/${DEF}"
+KERNEL_SRC2="${WORK}/${DEF}"
 
 # Prepare Directory
 mkdir -p "${WORK}"
@@ -51,13 +51,13 @@ if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tgz && tar -xzf
 # if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tar.xz && unxz gcc.tar.xz && tar -xvf gcc.tar -C gcc; fi
 # [ ! -d clang ] && git clone --depth=1 "${CLANG_URL}" -b "${CLANG_BRANCH}" ./clang
 # [ ! -d gcc ] && git clone --depth=1 "${GCC_URL}" -b "${GCC_BRANCH}" ./gcc
-[ ! -d "${KERNELD}" ] && git clone "${KERNEL_SOURCE2}" -b "${KERNEL_BRANCH}" "${KERNELD}"
+[ ! -d "${KERNEL_SRC2}" ] && git clone "${KERNEL_SOURCE2}" -b "${KERNEL_BRANCH}" "${KERNEL_SRC2}"
 
 # Setting Toolchain Path
 PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
 
 # Enter Kernel root directory
-cd "${KERNELD}" | cp "${KERNEL_DEFCONFIG}" "${KERNEL_SRC}/arch/arm/configs/${KERNEL_DEFCONFIG}" | exit 1
+cd "${KERNEL_SRC2}" | cp "${KERNEL_DEFCONFIG}" "${KERNEL_SRC}/arch/arm/configs/" | exit 1
 cd "${KERNEL_SRC}" || exit 1
 
 # Start Compiling Kernel
