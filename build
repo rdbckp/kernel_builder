@@ -58,6 +58,7 @@ PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
 
 # Enter Kernel root directory
 cd "${KERNEL_SRC2}" || exit 1
+ls || exit 1
 mv "${KERNEL_SRC2}"/config/"${KERNEL_DEFCONFIG}" "${KERNEL_SRC}" || exit 1
 cd "${KERNEL_SRC}" || exit 1
 ls || exit 1
