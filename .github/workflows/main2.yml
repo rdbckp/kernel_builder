@@ -1,9 +1,17 @@
 name: Copy Files from Source Repo
 
+on: 
+  workflow_dispatch:
+    inputs:
+      DEVICE_NAME:
+        description: 'Ready'
+        required: true
+        default: 'Ok'
+
 on:
   push:
     branches:
-      - main
+      - master
 
 permissions:
   contents: write
