@@ -49,4 +49,5 @@ PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
 cd "${KERNEL_SRC}" | cp "${HOME}"/a02_defconfig . | exit 1
 
 # Start Compiling Kernel
+make_fun a02_defconfig
 make_fun -j"$(nproc --all)" 2>&1 | tee build.log 
