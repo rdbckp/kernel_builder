@@ -31,8 +31,14 @@ WORK="${HOME}/work"
 # Kernel Folder Name
 KERNEL="myKernel"
 
+# Defconfig Folder Name
+DEF="myDef"
+
 # Kernel Source Path
 KERNEL_SRC="${WORK}/${KERNEL}"
+
+# Defconfig Path
+KERNELD="${WORK}/${DEF}"
 
 # Prepare Directory
 mkdir -p "${WORK}"
