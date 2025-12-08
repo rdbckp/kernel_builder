@@ -31,11 +31,11 @@ WORK="${HOME}/work"
 # Kernel Folder Name
 KERNEL="myKernel"
 
-# Defconfig Folder Name
-DEF="myDef"
-
 # Kernel Source Path
 KERNEL_SRC="${WORK}/${KERNEL}"
+
+# Defconfig Folder Name
+DEF="myDef"
 
 # Defconfig Path
 KERNEL_SRC2="${WORK}/${DEF}"
@@ -51,7 +51,7 @@ if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tgz && tar -xzf
 # if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tar.xz && unxz gcc.tar.xz && tar -xvf gcc.tar -C gcc; fi
 # [ ! -d clang ] && git clone --depth=1 "${CLANG_URL}" -b "${CLANG_BRANCH}" ./clang
 # [ ! -d gcc ] && git clone --depth=1 "${GCC_URL}" -b "${GCC_BRANCH}" ./gcc
-[ ! -d "${KERNEL_SRC2}" ] && git clone "${KERNEL_SOURCE2}" -b "${KERNEL_BRANCH}" "${KERNEL_SRC2}"
+[ ! -d "${DEF}" ] && git clone "${KERNEL_SOURCE2}" -b "${KERNEL_BRANCH}" "${DEF}"
 
 # Setting Toolchain Path
 PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
