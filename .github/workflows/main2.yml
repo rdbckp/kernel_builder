@@ -1,4 +1,4 @@
-name: Copy Files from Source Repo
+name: Copy
 
 on: 
   workflow_dispatch:
@@ -26,7 +26,7 @@ jobs:
           source_path: "arch/arm/configs/a02_defconfig"
           destination_path: "$HOME"
           commit_message: "Custom commit message"
-          create_pr: true
+          create_pr: false
           pr_title: "Custom PR title"
           source_repo_token: ${{ secrets.SOURCE_REPO_PAT }}
           destination_repo_token: ${{ secrets.DEST_REPO_PAT }}
