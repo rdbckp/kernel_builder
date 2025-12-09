@@ -57,14 +57,12 @@ if [ ! -d "${KERNEL}" ]; then mkdir "${KERNEL}" && curl -Lsq "${KERNEL_SOURCE}" 
 PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
 
 # Enter Kernel root directory
-cd "${KERNEL_SRC2}/config"
-cp ./a02_defconfig "${KERNEL_SRC}/linux-4.14.187/arch/arm/configs"
-ls || exit 1
+# cd "${KERNEL_SRC2}/config"
+# cp ./a02_defconfig "${KERNEL_SRC}/linux-4.14.187/arch/arm/configs"
 cd "${KERNEL_SRC}/linux-4.14.187/arch/arm/configs"
 wget https://github.com/rdbckp/kernel_builder/blob/master/config/a02_defconfig
-ls || exit 1
-cd "${KERNEL_SRC}"
-ls || exit 1
+ls
+cd "${KERNEL_SRC}" || exit 1
 
 # Start Compiling Kernel
 make_fun "${KERNEL_DEFCONFIG}"
