@@ -8,13 +8,15 @@ KERNEL_DEFCONFIG="a02_defconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
 # CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android12L-release/clang-r383902.tar.gz"
-CLANG_URL="https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b.git"
-CLANG_BRANCH="lineage-20.0"
+# CLANG_URL="https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b.git"
+# CLANG_BRANCH="lineage-20.0"
+CLANG_URL="https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-6443078"
+CLANG_BRANCH="10.0"
 
 # Prebuilt GCC Utilities (AOSP)
 # GCC_URL="https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/heads/android12L-release.tar.gz"
 GCC_URL="https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.git"
-GCC_BRANCH="lineage-19.1"
+GCC_BRANCH="lineage-18.1"
 
 # Setup make Command
 make_fun() {
