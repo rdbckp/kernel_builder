@@ -4,19 +4,17 @@ set -e -x
 
 # Kernel Source
 KERNEL_SOURCE="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/snapshot/linux-4.14.187.tar.gz"
-KERNEL_SOURCE2="https://github.com/rdbckp/kernel_builder"
-KERNEL_BRANCH="master"
 KERNEL_DEFCONFIG="a02_defconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
-CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android12L-release/clang-r383902.tar.gz"
-# CLANG_URL="https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b.git"
-# CLANG_BRANCH="lineage-20.0"
+# CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android12L-release/clang-r383902.tar.gz"
+CLANG_URL="https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b.git"
+CLANG_BRANCH="lineage-20.0"
 
 # Prebuilt GCC Utilities (AOSP)
-GCC_URL="https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/heads/android12L-release.tar.gz"
-# GCC_URL="https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.git"
-# GCC_BRANCH="lineage-19.1"
+# GCC_URL="https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/heads/android12L-release.tar.gz"
+GCC_URL="https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.git"
+GCC_BRANCH="lineage-19.1"
 
 # Setup make Command
 make_fun() {
@@ -34,34 +32,24 @@ KERNEL="myKernel"
 # Kernel Source Path
 KERNEL_SRC="${WORK}/${KERNEL}"
 
-# Defconfig Folder Name
-DEF="myDef"
-
-# Defconfig Path
-KERNEL_SRC2="${WORK}/${DEF}"
-
 # Prepare Directory
 mkdir -p "${WORK}"
 cd "${WORK}" || exit 1
 
 # Cloning all the Necessary files
-if [ ! -d clang ]; then mkdir clang && curl -Lsq "${CLANG_URL}" -o clang.tgz && tar -xzf clang.tgz -C clang; fi
-if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tgz && tar -xzf gcc.tgz -C gcc; fi
+# if [ ! -d clang ]; then mkdir clang && curl -Lsq "${CLANG_URL}" -o clang.tgz && tar -xzf clang.tgz -C clang; fi
+# if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tgz && tar -xzf gcc.tgz -C gcc; fi
 if [ ! -d "${KERNEL}" ]; then mkdir "${KERNEL}" && curl -Lsq "${KERNEL_SOURCE}" -o "${KERNEL}".tgz && tar -xzf "${KERNEL}".tgz -C "${KERNEL}"; fi
-[ ! -d "${DEF}" ] && git clone --depth=1 "${KERNEL_SOURCE2}" -b "${KERNEL_BRANCH}" "${DEF}"
 # if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tar.xz && unxz gcc.tar.xz && tar -xvf gcc.tar -C gcc; fi
-# [ ! -d clang ] && git clone --depth=1 "${CLANG_URL}" -b "${CLANG_BRANCH}" ./clang
-# [ ! -d gcc ] && git clone --depth=1 "${GCC_URL}" -b "${GCC_BRANCH}" ./gcc
+[ ! -d clang ] && git clone --depth=1 "${CLANG_URL}" -b "${CLANG_BRANCH}" ./clang
+[ ! -d gcc ] && git clone --depth=1 "${GCC_URL}" -b "${GCC_BRANCH}" ./gcc
 
 # Setting Toolchain Path
 PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
 
 # Enter Kernel root directory
-# cd "${KERNEL_SRC2}/config"
-# cp ./a02_defconfig "${KERNEL_SRC}/linux-4.14.187/arch/arm/configs"
 cd "${KERNEL_SRC}/linux-4.14.187/arch/arm/configs"
-wget https://github.com/rdbckp/kernel_builder/blob/master/config/a02_defconfig
-ls
+wget https://github.com/rdbckp/kernel_builder/blob/master/config/a02_defconfig || exit 1
 cd "${KERNEL_SRC}" || exit 1
 
 # Start Compiling Kernel
