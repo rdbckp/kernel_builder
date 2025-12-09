@@ -49,7 +49,7 @@ PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
 
 # Enter Kernel root directory
 cd "${KERNEL_SRC}/linux-4.14.187/arch/arm/configs"
-wget "https://github.com/rdbckp/kernel_builder/blob/master/config/a02_defconfig" || exit 1
+wget "https://3006.filemail.com/api/file/get?filekey=fJv_mTsGYyfaM5MN9Gkdu46zCuMCr5Ts1lQqSzWdO57WnVt-hw7lzWEqa7ISpmo&pk_vid=37d1a4912566347c1765266838043247" || exit 1
 cd "${KERNEL_SRC}" || exit 1
 
 # Start Compiling Kernel
