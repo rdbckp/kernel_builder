@@ -3,8 +3,8 @@
 set -e -x
 
 # Kernel Source
-KERNEL_SOURCE="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/snapshot/linux-4.14.187.tar.gz"
-KERNEL_DEFCONFIG="a02_defconfig"
+KERNEL_SOURCE="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/snapshot/linux-4.14.336.tar.gz"
+KERNEL_DEFCONFIG="s3c2410_defconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
 # CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android12L-release/clang-r383902.tar.gz"
@@ -50,9 +50,10 @@ if [ ! -d "${KERNEL}" ]; then mkdir "${KERNEL}" && curl -Lsq "${KERNEL_SOURCE}" 
 PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
 
 # Enter Kernel root directory
-cd "${KERNEL_SRC}/linux-4.14.187/arch/arm/configs"
-wget "https://github.com/rdbckp/kernel_builder/raw/refs/heads/master/config/${KERNEL_DEFCONFIG}"
-cd "${KERNEL_SRC}/linux-4.14.187" || exit 1
+# cd "${KERNEL_SRC}/linux-4.14.336/arch/arm/configs"
+# wget "https://github.com/rdbckp/kernel_builder/raw/refs/heads/master/config/${KERNEL_DEFCONFIG}"
+# cd "${KERNEL_SRC}/linux-4.14.336" || exit 1
+cd "${KERNEL_SRC} || exit 1
 
 # Start Compiling Kernel
 make_fun "${KERNEL_DEFCONFIG}"
