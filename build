@@ -5,10 +5,10 @@ set -e -x
 # Kernel Source
 KERNEL_SOURCE="https://github.com/rdbckp/kernel_Q"
 KERNEL_BRANCH="kernel"
-KERNEL_DEFCONFIG="a02_defconfig"
+KERNEL_DEFCONFIG="a02_00_defconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
-CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android10-release/clang-r353983c.tar.gz"
+# CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android10-release/clang-r353983c.tar.gz"
 # CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android11-release/clang-r377782d.tar.gz"
 # CLANG_URL="https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b.git"
 # CLANG_BRANCH="lineage-20.0"
@@ -44,7 +44,7 @@ cd "${WORK}" || exit 1
 [ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
 
 # Cloning Clang
-if [ ! -d clang ]; then mkdir clang && curl -Lsq "${CLANG_URL}" -o clang.tgz && tar -xzf clang.tgz -C clang; fi
+# if [ ! -d clang ]; then mkdir clang && curl -Lsq "${CLANG_URL}" -o clang.tgz && tar -xzf clang.tgz -C clang; fi
 # [ ! -d clang ] && git clone --depth=1 "${CLANG_URL}" -b "${CLANG_BRANCH}" ./clang
 
 # Cloning GCC
@@ -55,7 +55,8 @@ if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tgz && tar -xzf
 # if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tar.xz && unxz gcc.tar.xz && tar -xvf gcc.tar -C gcc; fi
 
 # Setting Toolchain Path
-PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
+# PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
+PATH="${WORK}/gcc/bin:/bin"
 
 # Enter Kernel root directory
 # cd "${KERNEL_SRC}/linux-4.14.336/arch/arm/configs"
