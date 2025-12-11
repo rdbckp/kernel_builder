@@ -3,13 +3,13 @@
 set -e -x
 
 # Kernel Source
-KERNEL_SOURCE="https://github.com/a02-trial/a022f_kernel"
-KERNEL_BRANCH="ori"
+KERNEL_SOURCE="https://github.com/Firxp011/android_kernel_samsung_a02"
+KERNEL_BRANCH="A022FXXS3BWA1"
 KERNEL_DEFCONFIG="a02_defconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
 # CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android10-release/clang-r353983c.tar.gz"
-# CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android11-release/clang-r377782d.tar.gz"
+# CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/master-kernel-build-2021/clang-r383902.tar.gz"
 CLANG_URL="https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b.git"
 CLANG_BRANCH="lineage-20.0"
 # CLANG_URL="https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-6607189"
