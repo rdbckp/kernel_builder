@@ -21,8 +21,7 @@ GCC_BRANCH="lineage-17.0"
 
 # Setup make Command
 make_fun() {
-  make O=out ARCH=arm CC=clang HOSTCC=clang \
-    CLANG_TRIPLE=arm-linux-gnueabi- \
+  make O=out ARCH=arm \
     CROSS_COMPILE=arm-linux-androidkernel- "$@"
 }
 
