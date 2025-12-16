@@ -3,8 +3,8 @@
 set -e -x
 
 # Kernel Source
-KERNEL_SOURCE="https://github.com/almondnguyen/android_kernel_samsung_a01core"
-KERNEL_BRANCH="master"
+KERNEL_SOURCE="https://github.com/rdbckp"
+KERNEL_BRANCH="kernel_Q"
 KERNEL_DEFCONFIG="a02_defconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
@@ -40,6 +40,8 @@ cd "${WORK}" || exit 1
 # Cloning kernel
 # if [ ! -d "${KERNEL}" ]; then mkdir "${KERNEL}" && curl -Lsq "${KERNEL_SOURCE}" -o "${KERNEL}".tgz && tar -xzf "${KERNEL}".tgz -C "${KERNEL}"; fi
 [ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
+cd "${KERNEL_SRC}" && mv Makefile Justfile
+rm "${KERNEL_SRC}/arch/arm/configs/$KERNEL_DEFCONFIG"|| exit 1
 cd "${GITHUB_WORKSPACE}/config"
 cp "$KERNEL_DEFCONFIG" "${KERNEL_SRC}/arch/arm/configs" || exit 1
 cd "${KERNEL_SRC}" && ls
