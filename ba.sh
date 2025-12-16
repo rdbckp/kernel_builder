@@ -3,8 +3,8 @@
 set -e -x
 
 # Kernel Source
-KERNEL_SOURCE="https://github.com/manteiga25/rainbow-kernel-samsung-a12"
-KERNEL_BRANCH="main"
+KERNEL_SOURCE="https://github.com/almondnguyen/android_kernel_samsung_a01core"
+KERNEL_BRANCH="master"
 KERNEL_DEFCONFIG="a02_defconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
