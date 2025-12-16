@@ -38,8 +38,8 @@ cd "${WORK}" || exit 1
 [ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
 
 # Cloning Clang
-if [ ! -d clang ]; then mkdir clang && curl -Lsq "${CLANG_URL}" -o clang.tgz && tar -xzf clang.tgz -C clang; fi
-# [ ! -d clang ] && git clone --depth=1 "${CLANG_URL}" -b "${CLANG_BRANCH}" ./clang
+# if [ ! -d clang ]; then mkdir clang && curl -Lsq "${CLANG_URL}" -o clang.tgz && tar -xzf clang.tgz -C clang; fi
+[ ! -d clang ] && git clone --depth=1 "${CLANG_URL}" -b "${CLANG_BRANCH}" ./clang
 # mkdir clang && cd clang && wget "$CLANG_URL" && unzip *.zip || exit 1
 
 # Cloning GCC
