@@ -18,7 +18,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
 
-    - name: Downloading Toolchain
+    - name: Preparation
       run: |
         cd ${GITHUB_WORKSPACE}
         export KBUILD_BUILD_USER="${{ github.actor }}"
@@ -29,8 +29,11 @@ jobs:
     - name: Start Building Kernel
       run: |
         cd ${GITHUB_WORKSPACE}
-        make_fun "${KERNEL_DEFCONFIG}"
-        make_fun -j"$(nproc --all)" 2>&1 | tee build.log 
+        export ARCH=arm
+        export CROSS_COMPILE=arm-linux-androideabi-
+        mkdir -p out
+        make O=out ARCH=arm CROSS_COMPILE=arm-linux-androidkernel- a02_defconfig
+        make O=out ARCH=arm CROSS_COMPILE=arm-linux-androidkernel- -j16
         
     - name: Set Properties
       id: props
