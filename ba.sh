@@ -16,8 +16,8 @@ CLANG_URL="https://github.com/LineageOS/android_external_clang/archive/refs/head
 # Prebuilt GCC Utilities (AOSP)
 # GCC_URL="https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/heads/android10-release.tar.gz"
 GCC_URL="https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9.git"
-GCC_BRANCH="lineage-17.0"
-# GCC_BRANCH="cm-14.0"
+# GCC_BRANCH="lineage-17.0"
+GCC_BRANCH="cm-14.0"
 
 # Work Path
 WORK="${HOME}/work"
