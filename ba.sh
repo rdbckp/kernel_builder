@@ -40,8 +40,9 @@ cd "${WORK}" || exit 1
 # Cloning kernel
 # if [ ! -d "${KERNEL}" ]; then mkdir "${KERNEL}" && curl -Lsq "${KERNEL_SOURCE}" -o "${KERNEL}".tgz && tar -xzf "${KERNEL}".tgz -C "${KERNEL}"; fi
 [ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
-cd "${GITHUB_WORKSPACE}"/config && ls
-cp "$KERNEL_DEFCONFIG" "${KERNEL_SRC}"/arch/arm/configs || exit 1
+cd "${GITHUB_WORKSPACE}/config" && ls
+cp "$KERNEL_DEFCONFIG" "${KERNEL_SRC}/arch/arm/configs" || exit 1
+cd "${KERNEL_SRC}/arch/arm/configs" && ls
 cd "${WORK}" || exit 1
 
 # Cloning Clang
