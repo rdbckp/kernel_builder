@@ -34,7 +34,7 @@ jobs:
         export CROSS_COMPILE=arm-linux-androideabi-
         mkdir -p out
         make O=out HOSTCC=clang a02_defconfig
-        make O=out HOSTCC=clang CROSS_COMPILE=arm-linux-androideabi- CC="clang -target arm-linux-gnueabi -mno-outline-atomics" -j8
+        make O=out HOSTCC=clang CROSS_COMPILE=arm-linux-androideabi- CC="clang -target arm-linux-gnueabi" -j8
         
     - name: Set Properties
       id: props
