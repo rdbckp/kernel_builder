@@ -46,7 +46,7 @@ cd "${WORK}" || exit 1
 # Cloning Clang
 # if [ ! -d clang ]; then mkdir clang && curl -Lsq "${CLANG_URL}" -o clang.tgz && tar -xzf clang.tgz -C clang; fi
 # [ ! -d clang ] && git clone --depth=1 "${CLANG_URL}" -b "${CLANG_BRANCH}" ./clang
-if [ ! -d clang ]; then mkdir clang && curl -Lsq "${CLANG_URL}" -o clang.zip && unzip clang.zip -C clang; fi
+mkdir clang && cd clang &&& wget "$CLANG_URL" && unzip *.zip || exit 1
 
 # Cloning GCC
 # if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tgz && tar -xzf gcc.tgz -C gcc; fi
