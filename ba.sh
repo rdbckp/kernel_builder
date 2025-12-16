@@ -5,7 +5,7 @@ set -e -x
 # Kernel Source
 KERNEL_SOURCE="https://github.com/rdbckp/kernel_Q"
 KERNEL_BRANCH="main"
-KERNEL_DEFCONFIG="a02_defconfig"
+KERNEL_DEFCONFIG="allnoconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
 # CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/master-kernel-build-2021/clang-r383902.tar.gz"
