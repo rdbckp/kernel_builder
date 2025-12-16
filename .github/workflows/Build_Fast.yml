@@ -28,7 +28,6 @@ jobs:
         
     - name: Start Building Kernel
       run: |
-        cd ${GITHUB_WORKSPACE}
         export ARCH=arm
         export CROSS_COMPILE=arm-linux-androideabi-
         mkdir -p out
