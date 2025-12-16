@@ -18,13 +18,20 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
 
-    - name: Start Building Kernel
+    - name: Downloading Toolchain
       run: |
         cd ${GITHUB_WORKSPACE}
         export KBUILD_BUILD_USER="${{ github.actor }}"
         export KBUILD_BUILD_HOST="${{ github.event.inputs.DEVICE_NAME }}"
         chmod +x ba.sh
         ./ba.sh
+        
+    - name: Start Building Kernel
+      run: |
+        cd ${GITHUB_WORKSPACE}
+        make_fun "${KERNEL_DEFCONFIG}"
+        make_fun -j"$(nproc --all)" 2>&1 | tee build.log 
+        
     - name: Set Properties
       id: props
       run: |
