@@ -3,8 +3,8 @@
 set -e -x
 
 # Kernel Source
-KERNEL_SOURCE="https://github.com/rdbckp"
-KERNEL_BRANCH="kernel_Q"
+KERNEL_SOURCE="https://github.com/rdbckp/kernel_Q"
+KERNEL_BRANCH="main"
 KERNEL_DEFCONFIG="a02_defconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
