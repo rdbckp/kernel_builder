@@ -20,6 +20,8 @@ jobs:
 
     - name: Preparation
       run: |
+        sudo apt-get update
+        sudo apt-get install -y gcc-arm-linux-gnueabihf binutils-arm-linux-gnueabihf
         cd ${GITHUB_WORKSPACE}
         export KBUILD_BUILD_USER="${{ github.actor }}"
         export KBUILD_BUILD_HOST="${{ github.event.inputs.DEVICE_NAME }}"
@@ -28,13 +30,15 @@ jobs:
         
     - name: Start Building Kernel
       run: |
-        cd /home/runner/work/myKernel
-        ls
+        cd /home/runner/work
+        export PATH="${PWD}/clang/bin:${PWD}/gcc/bin:/bin"
         export ARCH=arm
-        export CROSS_COMPILE=arm-linux-androideabi-
+        export CROSS_COMPILE=arm-linux-gnueabihf-
+        ls -l /usr/bin/as
+        cd /home/runner/work/myKernel
         mkdir -p out
         make O=out HOSTCC=clang a02_defconfig
-        make O=out HOSTCC=clang CROSS_COMPILE=arm-linux-androideabi- CC="clang -target arm-linux-gnueabi" -j8
+        make O=out HOSTCC=clang CROSS_COMPILE=arm-linux-gnueabihf- CC="clang -target arm-linux-gnueabi" -j8
         
     - name: Set Properties
       id: props
