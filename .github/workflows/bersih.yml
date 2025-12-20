@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  start working:
+  start-working:
     runs-on: ubuntu-latest
 
     permissions:
@@ -29,4 +29,4 @@ jobs:
     - name: Delete
       uses: ./
       with:
-        keep: 1
+        keep: 0
