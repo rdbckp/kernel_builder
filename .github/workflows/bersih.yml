@@ -23,6 +23,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v6
 
+    - name: Permission
+      run: |
+        cd ${GITHUB_WORKSPACE}
+        chmod +x -R scripts
+        
     - name: Delete
       uses: ./
       with:
