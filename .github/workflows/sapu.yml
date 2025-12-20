@@ -4,13 +4,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  making-zip:
+  Cleaning:
     runs-on: ubuntu-latest
     permissions:
       contents: write
 
     steps:
-    - uses: iamazeem/delete-workflow-runs-action@v1
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Working now
+      uses: iamazeem/delete-workflow-runs-action@v1
       with:
         include-disabled-workflows: true
 
