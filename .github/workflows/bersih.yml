@@ -10,11 +10,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  ci:
+  start working:
     runs-on: ubuntu-latest
 
-    # Permissions `actions: write` are required to delete previous workflow runs.
-    # Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
     permissions:
       contents: write
       actions: write
