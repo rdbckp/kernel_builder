@@ -1,0 +1,62 @@
+name: delete-workflow-runs-action
+description: GitHub Action to delete workflow runs
+author: Azeem Sajid <azeem.sajid@gmail.com>
+
+branding:
+  icon: x
+  color: red
+
+inputs:
+  token:
+    description: GitHub Token
+    required: false
+    default: "${{ github.token }}"
+  include-disabled-workflows:
+    description: Include disabled workflows
+    required: false
+    default: "true"
+  branch:
+    description: Filter by branch
+    required: false
+  commit-sha:
+    description: Filter by commit SHA
+    required: false
+  creation-date:
+    description: Filter by creation date e.g. `2025-02-24T01:00:00Z`
+    required: false
+  event:
+    description: Filter by event e.g. `pull_request`
+    required: false
+  status:
+    description: Filter by status e.g. `cancelled`
+    required: false
+  username:
+    description: Filter by username
+    required: false
+  workflow:
+    description: Filter by workflow filename e.g. `ci.yml`
+    required: false
+  keep:
+    description: Keep last workflow runs [min=0, max=10]
+    required: false
+    default: "0"
+
+runs:
+  using: composite
+  steps:
+    - name: Delete
+      env:
+        GH_TOKEN: ${{ inputs.token }}
+        INCLUDE_DISABLED_WORKFLOWS: ${{ inputs.include-disabled-workflows == 'true' }}
+        BRANCH: ${{ inputs.branch }}
+        COMMIT_SHA: ${{ inputs.commit-sha }}
+        CREATION_DATE: ${{ inputs.creation-date }}
+        EVENT: ${{ inputs.event }}
+        STATUS: ${{ inputs.status }}
+        USERNAME: ${{ inputs.username }}
+        WORKFLOW: ${{ inputs.workflow }}
+        KEEP: ${{ (inputs.keep < 0 || inputs.keep > 10) && 0 || inputs.keep }}
+      shell: bash
+      run: |
+        $GITHUB_ACTION_PATH/scripts/validate.bash
+        $GITHUB_ACTION_PATH/scripts/delete.bash
