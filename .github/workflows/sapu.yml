@@ -1,4 +1,4 @@
-name: Sapu
+name: Warning! Delete all
 
 on:
   workflow_dispatch:
