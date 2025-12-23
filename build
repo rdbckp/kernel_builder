@@ -6,8 +6,8 @@ set -e -x
 # KERNEL_SOURCE="https://github.com/rdbckp/update"
 # KERNEL_BRANCH="kernel"
 KERNEL_SOURCE="https://github.com/rdbckp/kernel_a02"
-KERNEL_BRANCH="kernel"
-KERNEL_DEFCONFIG="a02_00_defconfig"
+KERNEL_BRANCH="build"
+KERNEL_DEFCONFIG="a02_defconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
 # CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android11-release/clang-r377782d.tar.gz"
