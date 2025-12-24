@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       DEVICE_NAME:
-        description: 'Build'
+        description: 'User_Build'
         required: true
-        default: 'SM-A022F-Kernel'
+        default: 'SM-A022F'
 
 permissions:
   contents: write
@@ -32,7 +32,7 @@ jobs:
     - name: Compressed as Archive
       run: |
         cd /home/runner/work/myKernel/out/arch/arm/boot || exit 1
-        zip -r9 "${{ github.event.inputs.DEVICE_NAME }}-${{ steps.props.outputs.date }}.zip" ./* -x "dts" -x "dts/*"
+        zip -r9 * "${{ github.event.inputs.DEVICE_NAME }}-${{ steps.props.outputs.date }}.zip"
 
     - name: Release
       uses: ncipollo/release-action@v1.12.0
