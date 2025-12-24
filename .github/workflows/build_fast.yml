@@ -31,15 +31,27 @@ jobs:
 
     - name: Compressed as Archive
       run: |
-        cd /home/runner/work/myKernel/out/arch/arm/boot || exit 1
-        zip -r9 * "${{ github.event.inputs.DEVICE_NAME }}-${{ steps.props.outputs.date }}.zip"
+        cd /home/runner/work/myKernel/out/arch/arm || exit 1
+        zip -r9 "${{ github.event.inputs.DEVICE_NAME }}-${{ steps.props.outputs.date }}.zip" boot/
+        cp *.zip ${GITHUB_WORKSPACE}/output
+        cd /home/runner/work/myKernel && rm -rf out
 
+    - name: Configure Git
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "actions@github.com"
+        
+    - name: Add and Commit file
+      run: |
+        git add -A
+        git commit -m "Commit"
+        git push
+        
     - name: Release
       uses: ncipollo/release-action@v1.12.0
       with:
         artifacts: |
-          /home/runner/work/myKernel/out/arch/arm/boot/*.zip
-          /home/runner/work/myKernel/build.log
+          ${GITHUB_WORKSPACE}/output/*.zip
         name: Compiled Kernel for ${{ github.event.inputs.DEVICE_NAME }} - ${{ steps.props.outputs.date }}
         draft: false
         prerelease: false
@@ -48,7 +60,6 @@ jobs:
         body: |
           ## Notes
             - Extract ${{ github.event.inputs.DEVICE_NAME }}-${{ steps.props.outputs.date }}.zip, look your newly-compiled kernel inside.
-            - Include building logs.
 
     - name: Link of Release
       run: |
