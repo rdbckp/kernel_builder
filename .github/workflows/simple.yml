@@ -43,8 +43,8 @@ jobs:
 
     - name: Compressed as Archive
       run: |
-        cd /home/runner/work/myKernel/out/arch/arm/boot || exit 1
-        zip -r9 "${{ github.event.inputs.DEVICE_NAME }}-${{ steps.props.outputs.date }}.zip" ./* -x "dts" -x "dts/*"
+        cd /home/runner/work/myKernel/out/arch/arm || exit 1
+        zip -r9 "${{ github.event.inputs.DEVICE_NAME }}-${{ steps.props.outputs.date }}.zip" boot
 
     - name: Release
       uses: ncipollo/release-action@v1.12.0
