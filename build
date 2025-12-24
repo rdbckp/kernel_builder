@@ -15,14 +15,13 @@ GCC_URL="https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-li
 GCC_BRANCH="lineage-19.1"
 
 # ===================================================
-# Cloning and Downloading
+# Downloading Toolchain
 # ===================================================
 if [ ! -d clang ]; then mkdir clang && curl -Lsq "${CLANG_URL}" -o clang.tgz && tar -xzf clang.tgz -C clang; fi
 # if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tgz && tar -xzf gcc.tgz -C gcc; fi
 # if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tar.xz && unxz gcc.tar.xz && tar -xvf gcc.tar -C gcc; fi
 # [ ! -d clang ] && git clone --depth=1 "${CLANG_URL}" -b "${CLANG_BRANCH}" ./clang
 [ ! -d gcc ] && git clone --depth=1 "${GCC_URL}" -b "${GCC_BRANCH}" ./gcc
-[ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
 
 # ===================================================
 # Make Command Setup
@@ -44,6 +43,7 @@ KERNEL_SRC="${WORK}/${KERNEL}"
 mkdir -p "${WORK}"
 cd "${WORK}" || exit 1
 PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
+[ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
 
 # ===================================================
 # Compiling
