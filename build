@@ -8,8 +8,8 @@ set -e -x
 KERNEL_SOURCE="https://github.com/rdbckp/a02_open"
 KERNEL_BRANCH="main"
 
-# KERNEL_DEFCONFIG="a02_00_defconfig"
-KERNEL_DEFCONFIG="k39tv1_bsp_titan_hamster_defconfig"
+KERNEL_DEFCONFIG="a02_00_defconfig"
+# KERNEL_DEFCONFIG="k39tv1_bsp_titan_hamster_defconfig"
 
 # Prebuilt Clang Toolchain (AOSP)
 # CLANG_URL="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android10-release/clang-r353983c.tar.gz"
