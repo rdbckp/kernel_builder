@@ -70,4 +70,4 @@ cd "${KERNEL_SRC}" || exit 1
 
 # Start Compiling Kernel
 make_fun "${KERNEL_DEFCONFIG}"
-make_fun -j"$(nproc --all)" dtbs modules 2>&1 | tee build.log 
+make_fun -j"$(nproc --all)" modules 2>&1 | tee build.log 
