@@ -17,7 +17,7 @@ jobs:
     - name: Working for clang
       run: |
         cd ${GITHUB_WORKSPACE}
-        rm clang
+        rm -rf clang
         
     - name: Configure Git
       run: |
