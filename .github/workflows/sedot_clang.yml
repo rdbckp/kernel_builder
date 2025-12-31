@@ -31,6 +31,6 @@ jobs:
         
     - name: Add and Commit file
       run: |
-        git add clang
+        git add *
         git commit -m "clang"
         git push
