@@ -28,6 +28,9 @@ jobs:
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "actions@github.com"
+        git lfs install
+        git lfs track "*.1git clang-11 *.so *.11git"
+        git add .gitattributes
         
     - name: Add and Commit file
       run: |
