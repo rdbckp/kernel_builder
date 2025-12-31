@@ -14,14 +14,14 @@ echo $PATH
 cd /home/runner/work/kernel_builder/kernel_builder/work/myKernel
 
 # Setup make Command
-export ARCH="arm"
-export CC="clang"
-export HOSTCC="clang"
-export CROSS_COMPILE="${PATH}/arm-linux-androidkernel-"
-export CLANG_TRIPLE="arm-linux-gnueabi-"
-export KCFLAGS=-"w"
-export CONFIG_SECTION_MISMATCH_WARN_ONLY="y"
-export CFLAGS_WARN="-Wunused-but-set-variable"
+export ARCH=arm
+export CC=clang
+export HOSTCC=clang
+export CROSS_COMPILE=${PATH}/arm-linux-androidkernel-
+export CLANG_TRIPLE="arm-linux-gnueabi-
+export KCFLAGS=-w
+export CONFIG_SECTION_MISMATCH_WARN_ONLY=y
+export CFLAGS_WARN=-Wunused-but-set-variable
 export xxx="ARCH=arm CC=clang HOSTCC=clang CROSS_COMPILE=arm-linux-androidkernel- CLANG_TRIPLE=arm-linux-gnueabi- KCFLAGS=-w CONFIG_SECTION_MISMATCH_WARN_ONLY=y CFLAGS_WARN=-Wunused-but-set-variable"
 
 # Start Compiling Kernel
