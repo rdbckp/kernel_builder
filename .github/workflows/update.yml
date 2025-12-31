@@ -1,4 +1,4 @@
-name: Sedot clang
+name: Update Env
 
 on:
   workflow_dispatch:
@@ -19,6 +19,7 @@ jobs:
         sudo apt-get update
         sudo apt-get upgrade -y
         sudo apt-get install -y build-essential bc gcc-arm-linux-gnueabihf binutils-arm-linux-gnueabihf make bison
+        ls
         mkdir tempe
         mv ba.sh tempe/.
         
@@ -26,12 +27,9 @@ jobs:
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "actions@github.com"
-        git lfs install
-        git lfs track "*.1git clang-11 *.so *.11git"
-        git add .gitattributes
         
     - name: Add and Commit file
       run: |
         git add *
-        git commit -m "clang"
+        git commit -m "update"
         git push
