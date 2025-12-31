@@ -8,5 +8,5 @@ GCC_URL="https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/a
 # GCC_BRANCH="lineage-19.1"
 
 # Cloning GCC
-if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tgz && tar -xzvf gcc.tgz -C gcc; fi
+if [ ! -d gcc ]; then mkdir gcc && curl -Lsq "${GCC_URL}" -o gcc.tgz && tar -xzf gcc.tgz -C gcc; fi
 # [ ! -d gcc ] && git clone --depth=1 "${GCC_URL}" -b "${GCC_BRANCH}" ./gcc
