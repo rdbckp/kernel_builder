@@ -30,7 +30,7 @@ jobs:
         sudo apt-get install -y zip unzip tar gzip bzip2 rar unrar
         ls
         mkdir tempe
-        mv ba.sh tempe/.
+        cp ba.sh tempe/.
         rm ba.sh
         
     - name: Configure Git
