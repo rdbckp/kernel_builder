@@ -9,11 +9,12 @@ KERNEL_BRANCH="main"
 KERNEL_DEFCONFIG="a02_defconfig"
 
 # Setup Folder
-WORK="${HOME}/work"
+WORK="/home/runner/work/kernel_builder/kernel_builder/work"
 KERNEL="myKernel"
 KERNEL_SRC="${WORK}/${KERNEL}"
 mkdir -p "${WORK}"
 cd "${WORK}"
 
 # Cloning kernel
+cd $WORK
 [ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
