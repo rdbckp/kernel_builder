@@ -23,11 +23,29 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y build-essential bc gcc-arm-linux-gnueabihf binutils-arm-linux-gnueabihf make bison
         
-    - name: Building Kernel
+    - name: Setup Kernel Source
       run: |
         cd ${GITHUB_WORKSPACE}
         export KBUILD_BUILD_USER="${{ github.actor }}"
         export KBUILD_BUILD_HOST="${{ github.event.inputs.DEVICE_NAME }}"
+        chmod +x kernel
+        ./kernel
+        
+    - name: Setup Clang
+      run: |
+        cd ${GITHUB_WORKSPACE}
+        chmod +x clang
+        ./clang
+        
+    - name: Setup Gcc
+      run: |
+        cd ${GITHUB_WORKSPACE}
+        chmod +x gcc
+        ./gcc
+        
+    - name: Building Kernel
+      run: |
+        cd ${GITHUB_WORKSPACE}
         chmod +x build
         ./build
         
