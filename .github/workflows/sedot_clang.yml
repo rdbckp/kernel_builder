@@ -14,15 +14,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Working for clang
+    - name: Setup Environment
       run: |
-        cd ${GITHUB_WORKSPACE}
-        git clone https://github.com/a02-trial/toolchain -b clang11
-        mkdir -p tempe
-        cd toolchain && mv * ${GITHUB_WORKSPACE}/tempe/.
-        cd ..
-        rm -rf toolchain
-        mv tempe clang
+        sudo apt-get update
+        sudo apt-get upgrade -y
+        sudo apt-get install -y build-essential bc gcc-arm-linux-gnueabihf binutils-arm-linux-gnueabihf make bison
         
     - name: Configure Git
       run: |
