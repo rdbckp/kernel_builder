@@ -34,8 +34,8 @@ jobs:
     - name: Setup Clang
       run: |
         cd ${GITHUB_WORKSPACE}
-        chmod +x clang11
-        ./clang11
+        ls
+        mv clang /home/runner/work/.
         
     - name: Setup Gcc
       run: |
