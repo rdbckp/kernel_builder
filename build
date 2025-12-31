@@ -2,6 +2,9 @@
 
 set -e -x
 
+cd "${WORK}"
+PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
+
 # Setup make Command
 make_fun() {
   make O=out ARCH=arm CC=clang HOSTCC=clang \
@@ -12,10 +15,8 @@ make_fun() {
     CROSS_COMPILE=arm-linux-androideabi- "$@"
 }
 
-# Setting Toolchain Path
-PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
-cd "${KERNEL_SRC}" || exit 1
-
 # Start Compiling Kernel
+cd "${KERNEL_SRC}"
+mkdir -p out
 make_fun "${KERNEL_DEFCONFIG}"
 make_fun -j"$(nproc --all)" 2>&1 | tee build.log 
