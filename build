@@ -9,7 +9,7 @@ echo ------------------------------------------------
 echo ----------------- C H E C K --------------------
 echo ------------------------------------------------
 echo ------------------------------------------------
-PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
+PATH="${WORK}/clang/bin:${WORK}/gcc/bin:${PATH}"
 echo $PATH
 cd /home/runner/work/kernel_builder/kernel_builder/work/myKernel
 
