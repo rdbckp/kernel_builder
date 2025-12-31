@@ -7,3 +7,16 @@ KERNEL_SOURCE="https://github.com/rdbckp/linux"
 KERNEL_BRANCH="main"
 
 KERNEL_DEFCONFIG="a02_defconfig"
+
+# Work Path
+WORK="${HOME}/work"
+
+# Kernel Folder Name
+KERNEL="myKernel"
+
+# Kernel Source Path
+KERNEL_SRC="${WORK}/${KERNEL}"
+
+# Prepare Directory
+mkdir -p "${WORK}"
+cd "${WORK}" || exit 1
