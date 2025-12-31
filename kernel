@@ -13,7 +13,7 @@ WORK="${HOME}/work"
 KERNEL="myKernel"
 KERNEL_SRC="${WORK}/${KERNEL}"
 mkdir -p "${WORK}"
-cd "${WORK}" || exit 1
+cd "${WORK}"
 
 # Cloning kernel
 [ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
