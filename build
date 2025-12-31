@@ -4,15 +4,18 @@ set -e -x
 
 cd "${WORK}"
 PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
+cd "${KERNEL_SRC}"
 
 # Setup make Command
-xxx() {
-    ARCH=arm CC=clang HOSTCC=clang \
-    CROSS_COMPILE=arm-linux-androideabi- \
-    CLANG_TRIPLE=arm-linux-gnueabi- \
-    KCFLAGS=-w CONFIG_SECTION_MISMATCH_WARN_ONLY=y \
-    CFLAGS_WARN=-Wunused-but-set-variable "$@"
-}
+export ARCH=arm
+export CC=clang
+export HOSTCC=clang
+export CROSS_COMPILE=arm-linux-androideabi-
+export CLANG_TRIPLE=arm-linux-gnueabi-
+export KCFLAGS=-w
+export CONFIG_SECTION_MISMATCH_WARN_ONLY=y
+export CFLAGS_WARN=-Wunused-but-set-variable
+export xxx="ARCH=arm CC=clang HOSTCC=clang CROSS_COMPILE=arm-linux-androideabi- CLANG_TRIPLE=arm-linux-gnueabi- KCFLAGS=-w CONFIG_SECTION_MISMATCH_WARN_ONLY=y CFLAGS_WARN=-Wunused-but-set-variable"
 
 # Start Compiling Kernel
 cd "${KERNEL_SRC}"
