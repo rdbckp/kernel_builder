@@ -28,10 +28,19 @@ jobs:
         sudo apt-get install -y build-essential bc gcc-aarch64-linux-gnu gcc-arm-linux-gnueabi libssl-dev libfl-dev
         sudo apt-get install -y curl git ftp lftp wget libarchive-tools ccache
         sudo apt-get install -y zip unzip tar gzip bzip2 rar unrar
+        
+    - name: Downloading
+      run: |
+        git clone https://github.com/manteiga25/rainbow-kernel-samsung-a12  -b main
         ls
-        mkdir tempe
-        cp ba.sh tempe/.
-        rm ba.sh
+        mkdir -p dodol
+        cd rainbow-kernel-samsung-a12-main
+        cp -r drivers/input/touchscreen/ili9881x ${GITHUB_WORKSPACE}/dodol
+        cp -r drivers/input/touchscreen/novatek/nt36525 ${GITHUB_WORKSPACE}/dodol
+        cp -r drivers/input/touchscreen/nt36572_common ${GITHUB_WORKSPACE}/dodol
+        ${GITHUB_WORKSPACE}
+        zip -r9 tc.zip ./dodol
+        rm -rf dodol && rm -rf rainbow-kernel-samsung-a12-main
         
     - name: Configure Git
       run: |
