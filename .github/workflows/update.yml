@@ -40,6 +40,7 @@ jobs:
         cp -r drivers/input/touchscreen/nt36572_common ${GITHUB_WORKSPACE}/dodol
         cd ${GITHUB_WORKSPACE}
         zip -r9 tc.zip dodol .
+        rm -rf rainbow-kernel-samsung-a12 && rm -rf dodol
         
     - name: Configure Git
       run: |
