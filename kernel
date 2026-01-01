@@ -3,7 +3,7 @@
 set -e -x
 
 # Kernel Source
-KERNEL_SOURCE="https://github.com/physwizz/a022f-u2"
+KERNEL_SOURCE="https://github.com/rdbckp/kernel"
 KERNEL_BRANCH="main"
 
 # Setup Folder
