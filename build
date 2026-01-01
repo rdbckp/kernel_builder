@@ -33,5 +33,5 @@ echo ----------------- C H E C K --------------------
 echo ------------------------------------------------
 echo ------------------------------------------------
 mkdir -p out
-make $xxx O=out a02_00_defconfig
+make $xxx O=out a02_defconfig
 make $xxx O=out -j"$(nproc --all)" 2>&1 | tee build.log 
