@@ -1,0 +1,38 @@
+name: Update Env
+
+on:
+  workflow_dispatch:
+
+jobs:
+  download-and-commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Downloading
+      run: |
+        git clone https://github.com/manteiga25/rainbow-kernel-samsung-a12  -b main
+        ls
+        mkdir -p dodol
+        cd rainbow-kernel-samsung-a12
+        cp -r drivers/input/touchscreen/ili9881x ${GITHUB_WORKSPACE}/dodol
+        cp -r drivers/input/touchscreen/novatek/nt36525 ${GITHUB_WORKSPACE}/dodol
+        cp -r drivers/input/touchscreen/nt36572_common ${GITHUB_WORKSPACE}/dodol
+        ${GITHUB_WORKSPACE}
+        zip -r9 tc.zip dodol .
+        
+    - name: Configure Git
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "actions@github.com"
+        
+    - name: Add and Commit file
+      run: |
+        git add tc.zip
+        git commit -m "update"
+        git push
