@@ -18,11 +18,10 @@ export ARCH=arm
 export CC=clang
 export HOSTCC=clang
 export CROSS_COMPILE=arm-linux-androideabi-
-export CLANG_TRIPLE=arm-linux-gnueabi-
 export KCFLAGS=-w
 export CONFIG_SECTION_MISMATCH_WARN_ONLY=y
 export CFLAGS_WARN=-Wunused-but-set-variable
-export xxx="ARCH=arm CC=clang HOSTCC=clang CROSS_COMPILE=arm-linux-androideabi- CLANG_TRIPLE=arm-linux-gnueabi- KCFLAGS=-w CONFIG_SECTION_MISMATCH_WARN_ONLY=y CFLAGS_WARN=-Wunused-but-set-variable"
+export xxx="ARCH=arm CC=clang HOSTCC=clang CROSS_COMPILE=arm-linux-androideabi- KCFLAGS=-w CONFIG_SECTION_MISMATCH_WARN_ONLY=y CFLAGS_WARN=-Wunused-but-set-variable"
 
 # Start Compiling Kernel
 cd /home/runner/work/kernel_builder/kernel_builder/work/myKernel
@@ -33,5 +32,5 @@ echo ----------------- C H E C K --------------------
 echo ------------------------------------------------
 echo ------------------------------------------------
 mkdir -p out
-make $xxx O=out a02_defconfig
+make $xxx O=out a02_00_defconfig
 make $xxx O=out -j"$(nproc --all)" 2>&1 | tee build.log 
