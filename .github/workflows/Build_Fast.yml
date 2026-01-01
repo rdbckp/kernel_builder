@@ -40,16 +40,13 @@ jobs:
         mkdir clang && cd clang
         mv ${GITHUB_WORKSPACE}/clang .
         ls
+        echo -------------------------------- C L A N G --------------------------------------------
 
     - name: Setup Gcc
       run: |
         cd ${GITHUB_WORKSPACE}
         chmod +x gcc11
         ./gcc11
-        cd /home/runner/work/kernel_builder/kernel_builder/work/myKernel/toolchain
-        mkdir gcc && cd gcc
-        mv /home/runner/work/kernel_builder/kernel_builder/work/gcc .
-        ls
 
     - name: Building Kernel
       run: |
