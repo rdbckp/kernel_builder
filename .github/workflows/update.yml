@@ -39,8 +39,7 @@ jobs:
         cp -r drivers/input/touchscreen/novatek/nt36525 ${GITHUB_WORKSPACE}/dodol
         cp -r drivers/input/touchscreen/nt36572_common ${GITHUB_WORKSPACE}/dodol
         ${GITHUB_WORKSPACE}
-        zip -r9 tc.zip ./dodol
-        rm -rf dodol && rm -rf rainbow-kernel-samsung-a12
+        zip -r9 tc.zip dodol .
         
     - name: Configure Git
       run: |
@@ -49,6 +48,6 @@ jobs:
         
     - name: Add and Commit file
       run: |
-        git add *
+        git add tc.zip
         git commit -m "update"
         git push
