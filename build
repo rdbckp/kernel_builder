@@ -18,22 +18,20 @@ GCC_URL="https://github.com/rdbckp/gcc.git"
 GCC_BRANCH="main"
 
 # ===================================================
-# Downloading Toolchain
-# ===================================================
-[ ! -d clang ] && git clone --depth=1 "${CLANG_URL}" -b "${CLANG_BRANCH}" ./clang
-[ ! -d gcc ] && git clone --depth=1 "${GCC_URL}" -b "${GCC_BRANCH}" ./gcc
-
-# ===================================================
 # Folder and Path Setup
 # ===================================================
 WORK="${HOME}/work"
 KERNEL="myKernel"
 KERNEL_SRC="${WORK}/${KERNEL}"
 mkdir -p "${WORK}"
+cd "${WORK}" || exit 1
+
 [ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
-cd "${WORK}"
-export PATH="${PWD}/clang/bin:${PWD}/gcc/bin:/bin"
-cd "${KERNEL}"
+[ ! -d clang ] && git clone --depth=1 "${CLANG_URL}" -b "${CLANG_BRANCH}" ./clang
+[ ! -d gcc ] && git clone --depth=1 "${GCC_URL}" -b "${GCC_BRANCH}" ./gcc
+
+PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
+cd "${KERNEL_SRC}" || exit 1
 
 # ===================================================
 # Compiling
