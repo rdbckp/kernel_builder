@@ -37,6 +37,6 @@ cd "${KERNEL_SRC}" || exit 1
 # Compiling
 # ===================================================
 mkdir -p out
-make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=gcc "${KERNEL_DEFCONFIG}"
-make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=gcc -j$(nproc) vmlinux
-make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=gcc -j$(nproc) zImage 2>&1 | tee build.log 
+make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=clang "${KERNEL_DEFCONFIG}"
+make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=clang -j$(nproc) vmlinux
+make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=clang -j$(nproc) zImage 2>&1 | tee build.log 
