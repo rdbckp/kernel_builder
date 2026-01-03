@@ -38,6 +38,6 @@ PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
 # Compiling
 # ===================================================
 cd "${KERNEL_SRC}" || exit 1
-make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=gcc LD=ld.lld LDFLAGS="-lgcc -L${PWD}/toolchain/gcc/lib/gcc/arm-linux-androideabi/4.9.x" a02_defconfig
-make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=gcc LD=ld.lld LDFLAGS="-lgcc -L${PWD}/toolchain/gcc/lib/gcc/arm-linux-androideabi/4.9.x" -j$(nproc) vmlinux
-make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=gcc LD=ld.lld LDFLAGS="-lgcc -L${PWD}/toolchain/gcc/lib/gcc/arm-linux-androideabi/4.9.x" -j$(nproc) zImage 2>&1 | tee build.log 
+make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=gcc a02_defconfig
+make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=gcc -j$(nproc) vmlinux
+make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=gcc -j$(nproc) zImage 2>&1 | tee build.log 
