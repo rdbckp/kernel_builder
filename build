@@ -30,14 +30,15 @@ WORK="${HOME}/work"
 KERNEL="myKernel"
 KERNEL_SRC="${WORK}/${KERNEL}"
 mkdir -p "${WORK}"
-cd "${WORK}" || exit 1
-PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
 [ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
+cd "${WORK}"
+export PATH="${PWD}/clang/bin:${PWD}/gcc/bin:/bin"
+cd "${WORK}/${KERNEL}"
 
 # ===================================================
 # Compiling
 # ===================================================
-cd "${KERNEL_SRC}" || exit 1
+mkdir -p out
 make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=gcc a02_defconfig
 make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=gcc -j$(nproc) vmlinux
 make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=gcc -j$(nproc) zImage 2>&1 | tee build.log 
