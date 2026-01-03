@@ -2,36 +2,42 @@
 
 set -e -x
 
-cd /home/runner/work/kernel_builder/kernel_builder/work/myKernel/toolchain
-ls
-echo ------------------------------------------------
-echo ------------------------------------------------
-echo ----------------- C H E C K --------------------
-echo ------------------------------------------------
-echo ------------------------------------------------
-export PATH="${PWD}/clang/bin:${PWD}/gcc/bin:${PATH}"
-echo $PATH
-cd /home/runner/work/kernel_builder/kernel_builder/work/myKernel
+# ===================================================
+# Kernel Setup
+# ===================================================
+KERNEL_SOURCE="https://github.com/rdbckp/kernel"
+KERNEL_BRANCH="main"
+KERNEL_DEFCONFIG="a02_defconfig"
 
-# Setup make Command
-export ARCH=arm
-export CC=clang
-export HOSTCC=clang
-export CROSS_COMPILE=arm-linux-androideabi-
-export KCFLAGS=-w
-export CONFIG_SECTION_MISMATCH_WARN_ONLY=y
-export CFLAGS_WARN=-Wunused-but-set-variable
-export SYSTEM_VERSION_COMPAT=1
-export xxx="ARCH=arm CC=clang HOSTCC=clang CROSS_COMPILE=arm-linux-androideabi- KCFLAGS=-w CONFIG_SECTION_MISMATCH_WARN_ONLY=y SYSTEM_VERSION_COMPAT=1 CFLAGS_WARN=-Wunused-but-set-variable"
+# ===================================================
+# Toolchain Setup
+# ===================================================
+CLANG_URL="https://github.com/rdbckp/clang.git"
+CLANG_BRANCH="main"
+GCC_URL="https://github.com/rdbckp/gcc.git"
+GCC_BRANCH="main"
 
-# Start Compiling Kernel
-cd /home/runner/work/kernel_builder/kernel_builder/work/myKernel
-ls
-echo ------------------------------------------------
-echo ------------------------------------------------
-echo ----------------- C H E C K --------------------
-echo ------------------------------------------------
-echo ------------------------------------------------
-mkdir -p out
-make $xxx O=out a02_00_defconfig
-make $xxx O=out -j"$(nproc --all)" 2>&1 | tee build.log 
+# ===================================================
+# Downloading Toolchain
+# ===================================================
+[ ! -d clang ] && git clone --depth=1 "${CLANG_URL}" -b "${CLANG_BRANCH}" ./clang
+[ ! -d gcc ] && git clone --depth=1 "${GCC_URL}" -b "${GCC_BRANCH}" ./gcc
+
+# ===================================================
+# Folder and Path Setup
+# ===================================================
+WORK="${HOME}/work"
+KERNEL="myKernel"
+KERNEL_SRC="${WORK}/${KERNEL}"
+mkdir -p "${WORK}"
+cd "${WORK}" || exit 1
+PATH="${WORK}/clang/bin:${WORK}/gcc/bin:/bin"
+[ ! -d "${KERNEL}" ] && git clone --depth=1 "${KERNEL_SOURCE}" -b "${KERNEL_BRANCH}" "${KERNEL}"
+
+# ===================================================
+# Compiling
+# ===================================================
+cd "${KERNEL_SRC}" || exit 1
+make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=gcc LD=ld.lld LDFLAGS="-lgcc -L${PWD}/toolchain/gcc/lib/gcc/arm-linux-androideabi/4.9.x" a02_defconfig
+make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=gcc LD=ld.lld LDFLAGS="-lgcc -L${PWD}/toolchain/gcc/lib/gcc/arm-linux-androideabi/4.9.x" -j$(nproc) vmlinux
+make O=out KCFLAGS="-w -ffreestanding" ARCH=arm CROSS_COMPILE=arm-linux-androideabi- CC=clang HOSTCC=gcc LD=ld.lld LDFLAGS="-lgcc -L${PWD}/toolchain/gcc/lib/gcc/arm-linux-androideabi/4.9.x" -j$(nproc) zImage 2>&1 | tee build.log 
